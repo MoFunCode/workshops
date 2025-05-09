@@ -1,4 +1,7 @@
 package com.dealership;
+
+import java.util.ArrayList;
+
 /**
  * Program.java
  *
@@ -18,13 +21,14 @@ public class Program {
 
     public static void main(String[] args) {
 
-        Vehicle myVehicle = new Vehicle("J123LV21", 2002, "Honda", "Accord",
-                "Car", "Black", 130345,100);
+        Dealership dealership = new Dealership();
 
-        System.out.println(myVehicle);
+        Vehicle car1 = new Vehicle("VIN123", 2020, "Toyota", "Camry", "Sedan", "Black", 25000, 22000.0);
+        dealership.addVehicle(car1);
 
-
+        ArrayList<Vehicle> allCars = dealership.getAllVehicles();
+        System.out.println("All cars: " + allCars);
+    }
 
     }
 
-}
