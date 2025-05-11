@@ -1,7 +1,4 @@
 package com.dealership;
-
-import java.util.ArrayList;
-
 /**
  * Program.java
  *
@@ -21,13 +18,13 @@ public class Program {
 
     public static void main(String[] args) {
 
-        Dealership dealership = new Dealership();
+        DealershipFileManager manager = new DealershipFileManager();
+        Dealership dealership = manager.getDealership();
 
-        Vehicle car1 = new Vehicle("VIN123", 2020, "Toyota", "Camry", "Sedan", "Black", 25000, 22000.0);
-        dealership.addVehicle(car1);
-
-        ArrayList<Vehicle> allCars = dealership.getAllVehicles();
-        System.out.println("All cars: " + allCars);
+        if (dealership != null) {
+            System.out.println("Loaded dealership: " + dealership.getName());
+            System.out.println("Has " + dealership.getAllVehicles().size() + " vehicles");
+        }
     }
 
     }

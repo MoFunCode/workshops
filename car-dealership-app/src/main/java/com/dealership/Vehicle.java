@@ -8,32 +8,32 @@ package com.dealership;
  */
 
 public class Vehicle {
-
-    private String vin;
+    private int vin;
     private int year;
     private String make;
     private String model;
     private String vehicleType;
     private String color;
-    private int mileage;
+    private int odometer;
     private double price;
 
-    public Vehicle(String vin, int year, String make, String model, String vehicleType, String color, int mileage, double price) {
+    public Vehicle(int vin, int year, String make, String model,
+                   String vehicleType, String color, int odometer, double price) {
         this.vin = vin;
         this.year = year;
         this.make = make;
         this.model = model;
         this.vehicleType = vehicleType;
         this.color = color;
-        this.mileage = mileage;
+        this.odometer = odometer;
         this.price = price;
     }
 
-    public String getVin() {
+    public int getVin() {
         return vin;
     }
 
-    public void setVin(String vin) {
+    public void setVin(int vin) {
         this.vin = vin;
     }
 
@@ -77,12 +77,12 @@ public class Vehicle {
         this.color = color;
     }
 
-    public int getMileage() {
-        return mileage;
+    public int getOdometer() {
+        return odometer;
     }
 
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
+    public void setOdometer(int odometer) {
+        this.odometer = odometer;
     }
 
     public double getPrice() {
@@ -93,13 +93,10 @@ public class Vehicle {
         this.price = price;
     }
 
+
     @Override
     public String toString() {
-        return year + " " + make + " " + model + " (" + vehicleType + ")" +
-                "\nVIN: " + vin +
-                "\nColor: " + color +
-                "\nMileage: " + mileage +
-                "\nPrice: $" + String.format("%.2f", price);
+        return String.format("VIN: %d, %d %s %s (%s), Color: %s, Miles: %d, Price: $%.2f",
+                vin, year, make, model, vehicleType, color, odometer, price);
     }
-
 }

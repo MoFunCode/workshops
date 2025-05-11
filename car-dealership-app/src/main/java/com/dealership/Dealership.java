@@ -4,17 +4,13 @@ import java.util.ArrayList;
 
 /**
  * Dealership.java
- * <p>
  * This class represents a car dealership and its inventory system.
- * <p>
  * Responsibilities:
  * - Maintain basic dealership information such as:
  * - Name
  * - Address
  * - Phone number
- * <p>
  * - Manage a collection of Vehicle objects using an ArrayList.
- * <p>
  * - Provide functionality to:
  * - Add a vehicle to the inventory.
  * - Remove a vehicle from the inventory.
@@ -30,33 +26,47 @@ import java.util.ArrayList;
 
 public class Dealership {
 
-    private final ArrayList<Vehicle> vehicleInventory;
+    private final ArrayList<Vehicle> inventory;
+    private final String name;
+    private final String address;
+    private final String phone;
 
-    public Dealership() {
-        this.vehicleInventory = new ArrayList<Vehicle>();
+    public Dealership(String name, String address, String phone) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.inventory = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public void addVehicle(Vehicle vehicle) {
-        vehicleInventory.add(vehicle);
+        inventory.add(vehicle);
     }
 
     public ArrayList<Vehicle> getAllVehicles() {
-        return new ArrayList<Vehicle>(vehicleInventory);
+        return new ArrayList<>(inventory); // Defensive copy
     }
 
-    public Vehicle getVehicleByVIN(String vin) {
+    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByMake(String make) {
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByModel(String model) {
-        return null;
-    }
-
-    public ArrayList<Vehicle> getVehiclesByYear(int year) {
+    public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
         return null;
     }
 
@@ -64,7 +74,7 @@ public class Dealership {
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage) {
+    public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
         return null;
     }
 
@@ -72,13 +82,7 @@ public class Dealership {
         return null;
     }
 
-    public ArrayList<Vehicle> getVehiclesByPriceRange(double minPrice, double maxPrice) {
-        return null;
-    }
-
-
-    public void removeVehicle(String vin) {
-
+    public void removeVehicle(Vehicle vehicle) {
     }
 }
 
