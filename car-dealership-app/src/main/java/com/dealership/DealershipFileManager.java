@@ -1,8 +1,7 @@
 package com.dealership;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 
 public class DealershipFileManager {
@@ -48,6 +47,34 @@ public class DealershipFileManager {
             e.printStackTrace();
         }
 
-        return dealership; // Return the fully loaded dealership
+        return dealership;
+    }
+
+    public void saveDealership(Dealership dealership) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(INVENTORY_FILE))) {
+            writer.write(String.format("%s|%s|%s",
+                    dealership.getName(),
+                    dealership.getAddress(),
+                    dealership.getPhone()));
+            writer.newLine();
+
+            ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
+            for (Vehicle vehicle : vehicles) {
+                writer.write(String.format("%d|%d|%s|%s|%s|%s|%d|%.2f",
+                        vehicle.getVin(),
+                        vehicle.getYear(),
+                        vehicle.getMake(),
+                        vehicle.getModel(),
+                        vehicle.getVehicleType(),
+                        vehicle.getColor(),
+                        vehicle.getOdometer(),
+                        vehicle.getPrice()));
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error writing to inventory file: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
+
